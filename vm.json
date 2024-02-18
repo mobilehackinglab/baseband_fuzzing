@@ -123,19 +123,23 @@
 			"defaultValue": false
         },
         "adminUsername": {
-            "type": "string"
+            "type": "string",
+			"defaultValue": "mhluser"
         },
         "adminPassword": {
             "type": "secureString"
         },
         "virtualMachine1Zone": {
-            "type": "string"
+            "type": "string",
+			"defaultValue": "UTC"
         },
         "autoShutdownStatus": {
-            "type": "string"
+            "type": "string",
+			"defaultValue": "Enabled"
         },
         "autoShutdownTime": {
-            "type": "string"
+            "type": "string",
+			"value": "19:00"
         },
         "autoShutdownTimeZone": {
             "type": "string",
