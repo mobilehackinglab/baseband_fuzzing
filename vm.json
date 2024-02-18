@@ -1,94 +1,132 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+        "parameters": {
         "location": {
-            "type": "string"
+            "value": "westeurope"
         },
         "networkInterfaceName1": {
-            "type": "string"
+            "value": "mhl-basebandfuzzing414_z1"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing-nsg"
         },
         "networkSecurityGroupRules": {
-            "type": "array"
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                },
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 320,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                }
+            ]
         },
         "subnetName": {
-            "type": "string"
+            "value": "default"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing-vnet"
         },
         "addressPrefixes": {
-            "type": "array"
+            "value": [
+                "10.3.0.0/16"
+            ]
         },
         "subnets": {
-            "type": "array"
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.3.0.0/24"
+                    }
+                }
+            ]
         },
         "publicIpAddressName1": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing-ip"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "value": "Static"
         },
         "publicIpAddressSku": {
-            "type": "string"
+            "value": "Standard"
         },
         "pipDeleteOption": {
-            "type": "string"
+            "value": "Detach"
         },
         "virtualMachineName": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing"
         },
         "virtualMachineName1": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing"
         },
         "virtualMachineComputerName1": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing"
         },
         "virtualMachineRG": {
-            "type": "string"
+            "value": "MHL-BasebandFuzzing_group"
         },
         "osDiskType": {
-            "type": "string"
+            "value": "StandardSSD_LRS"
         },
         "osDiskDeleteOption": {
-            "type": "string"
+            "value": "Detach"
         },
         "virtualMachineSize": {
-            "type": "string"
+            "value": "Standard_D2s_v3"
         },
         "nicDeleteOption": {
-            "type": "string"
+            "value": "Detach"
         },
         "hibernationEnabled": {
-            "type": "bool"
+            "value": false
         },
         "adminUsername": {
-            "type": "string"
+            "value": "mhluser"
         },
         "adminPassword": {
-            "type": "secureString"
+            "value": null
         },
         "virtualMachine1Zone": {
-            "type": "string"
+            "value": "1"
         },
         "autoShutdownStatus": {
-            "type": "string"
+            "value": "Enabled"
         },
         "autoShutdownTime": {
-            "type": "string"
+            "value": "19:00"
         },
         "autoShutdownTimeZone": {
-            "type": "string"
+            "value": "UTC"
         },
         "autoShutdownNotificationStatus": {
-            "type": "string"
+            "value": "Disabled"
         },
         "autoShutdownNotificationLocale": {
-            "type": "string"
+            "value": "en"
         }
+    }
+ 
     },
     "variables": {
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
