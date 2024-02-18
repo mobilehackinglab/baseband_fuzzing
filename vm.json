@@ -139,7 +139,7 @@
         },
         "autoShutdownTime": {
             "type": "string",
-			"value": "19:00"
+			"defaultValue": "19:00"
         },
         "autoShutdownTimeZone": {
             "type": "string",
